@@ -49,7 +49,7 @@ static void update_time() {
 	}
 
   // Display this time on the TextLayer
-  	text_layer_set_text(s_time_layer_h, s_buffer_h+(('0' == s_buffer_h[0])?1:0));
+  	text_layer_set_text(s_time_layer_h, s_buffer_h);
   	text_layer_set_text(s_time_layer_m, s_buffer_d2);	
 
 }
@@ -123,7 +123,7 @@ static void main_window_load(Window *window) {
 
 
 // Create battery meter Layer
-s_battery_layer = layer_create(GRect(bounds.size.w/6, bounds.size.h - 20, (bounds.size.w/3)*2, 5));
+s_battery_layer = layer_create(GRect(bounds.size.w/3, bounds.size.h - 20, bounds.size.w/3, 5));
 layer_set_update_proc(s_battery_layer, battery_update_proc);
 
 // Add to Window
