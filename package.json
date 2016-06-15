@@ -14,17 +14,16 @@
         "resources": {
             "media": [
                 {
-                    "characterRegex": "[0-9]",
+                    "characterRegex": "[monteuwnhfrisajbpylgcvdMTWFSJFAOND| - 0-9]",
                     "file": "fonts/MIN",
-                    "name": "MIN_24",
+                    "name": "MIN_18",
                     "targetPlatforms": null,
-                    "trackingAdjust": 2,
                     "type": "font"
                 },
                 {
                     "characterRegex": "[0-9]: \\n",
                     "file": "fonts/HOUR",
-                    "name": "HOUR_36",
+                    "name": "HOUR_24",
                     "targetPlatforms": null,
                     "type": "font"
                 }
