@@ -92,9 +92,9 @@ s_time_layer_h2 = text_layer_create(
 
   // Apply to TextLayer
 
-text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_GOTHIC_28));
-text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
-text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
+text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_BITHAM_42_LIGHT));
+text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h));
