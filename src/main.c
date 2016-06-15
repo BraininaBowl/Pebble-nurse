@@ -22,38 +22,13 @@ static char s_buffer_h2[13];
 
 
   static char s_buffer_d[12];
-  strftime(s_buffer_d, sizeof(s_buffer_d), "%a %b %d", tick_time);
-
-  static char s_buffer_d2[14];
-	s_buffer_d2[0] = '\0';
+  strftime(s_buffer_d, sizeof(s_buffer_d), "%m/%d/%Y", tick_time);
 	
-	// Has the date one or two numbers?
-	if (s_buffer_d[8] == '0')
-	{
-		static char s_buffer_de[11];
-  		strftime(s_buffer_de, sizeof(s_buffer_de), "%a %b%e", tick_time);
-		strcat(s_buffer_d2,s_buffer_de); 
-	} else {
-		// Display this time on the TextLayer
-		strcat(s_buffer_d2,s_buffer_d); 
-	}
-
-	// append suffix
-	if (s_buffer_d[9] == '1')
-	{	
-		strcat(s_buffer_d2,"st"); 
-	} else if (s_buffer_d[9] == '2') {	
-		strcat(s_buffer_d2,"nd"); 
-	} else if (s_buffer_d[9] == '3') {	
-		strcat(s_buffer_d2,"rd"); 
-	} else {	
-		strcat(s_buffer_d2,"th"); 
-	}
 
   // Display this time on the TextLayer
   	text_layer_set_text(s_time_layer_h, s_buffer_h);
 text_layer_set_text(s_time_layer_h2, s_buffer_h2);
-  	text_layer_set_text(s_time_layer_m, s_buffer_d2);	
+  	text_layer_set_text(s_time_layer_m, s_buffer_d);	
 
 }
 
