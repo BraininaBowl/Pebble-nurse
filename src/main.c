@@ -90,14 +90,9 @@ s_time_layer_h2 = text_layer_create(
   text_layer_set_text(s_time_layer_m, "00");
   text_layer_set_text_alignment(s_time_layer_m, GTextAlignmentCenter);
 
-	
-  // Create GFont
-  s_time_font_h = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_HOUR_24));
-  s_time_font_m = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_MIN_16));
-
   // Apply to TextLayer
 
-text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_GOTHIC_24));
+text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_GOTHIC_28));
 text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
 text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
 
