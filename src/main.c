@@ -15,7 +15,7 @@ static void update_time() {
   struct tm *tick_time = localtime(&temp);
 
   // Write the current hours and minutes into a buffer
-  static char s_buffer_h[8];
+  static char s_buffer_h[12];
   strftime(s_buffer_h, sizeof(s_buffer_h), "%H:%M:%S", tick_time);
 static char s_buffer_h2[13];
   strftime(s_buffer_h2, sizeof(s_buffer_h2), "%I:%M:%S %P", tick_time);
@@ -95,10 +95,10 @@ static void main_window_load(Window *window) {
 	
   // Create the TextLayer with specific bounds
   s_time_layer_h = text_layer_create(
-      GRect(0, (bounds.size.h/2)-40, bounds.size.w, 48));
+      GRect(0, (bounds.size.h/2)-45, bounds.size.w, 48));
 
 s_time_layer_h2 = text_layer_create(
-      GRect(0, (bounds.size.h/2)-30, bounds.size.w, 48));
+      GRect(0, (bounds.size.h/2)-15, bounds.size.w, 48));
 	
   s_time_layer_m = text_layer_create(
       GRect(0, (bounds.size.h/2)+20, bounds.size.w, 20));
@@ -134,7 +134,7 @@ layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h2));
 
 
 // Create battery meter Layer
-s_battery_layer = layer_create(GRect(bounds.size.w/3, bounds.size.h - 20, bounds.size.w/3, 5));
+s_battery_layer = layer_create(GRect(bounds.size.w/3, bounds.size.h - 30, bounds.size.w/3, 5));
 layer_set_update_proc(s_battery_layer, battery_update_proc);
 
 // Add to Window
