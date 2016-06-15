@@ -4,6 +4,7 @@ static Window *s_main_window;
 static TextLayer *s_time_layer_h;
 static TextLayer *s_time_layer_h2;
 static TextLayer *s_time_layer_m;
+static TextLayer *s_time_layer_b;
 static Layer *s_battery_layer;
 static int s_battery_level;
 
@@ -57,6 +58,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 static void battery_callback(BatteryChargeState state) {
   // Record the new battery level
   s_battery_level = state.charge_percent;
+text_layer_set_text(s_time_layer_d, s_battery_level);	
 // Update meter
 layer_mark_dirty(s_battery_layer);
 }
@@ -68,13 +70,16 @@ static void main_window_load(Window *window) {
 	
   // Create the TextLayer with specific bounds
   s_time_layer_h = text_layer_create(
-      GRect(0, (bounds.size.h/2)-45, bounds.size.w, 48));
+      GRect(0, (bounds.size.h/2)-50, bounds.size.w, 48));
 
 s_time_layer_h2 = text_layer_create(
-      GRect(0, (bounds.size.h/2)-15, bounds.size.w, 48));
+      GRect(0, (bounds.size.h/2)-10, bounds.size.w, 48));
 	
   s_time_layer_m = text_layer_create(
       GRect(0, (bounds.size.h/2)+20, bounds.size.w, 24));
+	
+  s_time_layer_b = text_layer_create(
+      GRect(0, (bounds.size.h)-29, bounds.size.w, 24));
 
   // Improve the layout to be more like a watchface
   text_layer_set_background_color(s_time_layer_h, GColorClear);
@@ -90,16 +95,25 @@ s_time_layer_h2 = text_layer_create(
   text_layer_set_text(s_time_layer_m, "00");
   text_layer_set_text_alignment(s_time_layer_m, GTextAlignmentCenter);
 
+text_layer_set_background_color(s_time_layer_b, GColorClear);
+  text_layer_set_text_color(s_time_layer_b, GColorBlack);
+  text_layer_set_text(s_time_layer_b, "00");
+  text_layer_set_text_alignment(s_time_layer_b, GTextAlignmentCenter);
+
   // Apply to TextLayer
 
 text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_BITHAM_34_MEDIUM_NUMBERS));
 text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
 text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
 
+text_layer_set_font(s_time_layer_b, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+
+
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h));
 layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h2));
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_m));
+layer_add_child(window_layer, text_layer_get_layer(s_time_layer_b));
 
 
 // Create battery meter Layer
@@ -118,6 +132,7 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(s_time_layer_h);
 text_layer_destroy(s_time_layer_h2);
   text_layer_destroy(s_time_layer_m);
+text_layer_destroy(s_time_layer_b);
 
 // Destroy BatteryLayer
 layer_destroy(s_battery_layer);
