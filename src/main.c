@@ -99,12 +99,12 @@ static void main_window_load(Window *window) {
 
   // Improve the layout to be more like a watchface
   text_layer_set_background_color(s_time_layer_h, GColorClear);
-  text_layer_set_text_color(s_time_layer_h, GColorWhite);
+  text_layer_set_text_color(s_time_layer_h, GColorBlack);
   text_layer_set_text(s_time_layer_h, "0");
   text_layer_set_text_alignment(s_time_layer_h, GTextAlignmentCenter);
 
   text_layer_set_background_color(s_time_layer_m, GColorClear);
-  text_layer_set_text_color(s_time_layer_m, GColorWhite);
+  text_layer_set_text_color(s_time_layer_m, GColorBlack);
   text_layer_set_text(s_time_layer_m, "00");
   text_layer_set_text_alignment(s_time_layer_m, GTextAlignmentCenter);
 
@@ -123,7 +123,7 @@ static void main_window_load(Window *window) {
 
 
 // Create battery meter Layer
-s_battery_layer = layer_create(GRect((bounds.size.w/3)*2, bounds.size.h - 20, bounds.size.w/6, 5));
+s_battery_layer = layer_create(GRect(bounds.size.w/6, bounds.size.h - 20, (bounds.size.w/3)*2, 5));
 layer_set_update_proc(s_battery_layer, battery_update_proc);
 
 // Add to Window
