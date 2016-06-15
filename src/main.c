@@ -74,7 +74,7 @@ s_time_layer_h2 = text_layer_create(
       GRect(0, (bounds.size.h/2)-15, bounds.size.w, 48));
 	
   s_time_layer_m = text_layer_create(
-      GRect(0, (bounds.size.h/2)+20, bounds.size.w, 20));
+      GRect(0, (bounds.size.h/2)+20, bounds.size.w, 24));
 
   // Improve the layout to be more like a watchface
   text_layer_set_background_color(s_time_layer_h, GColorClear);
@@ -92,9 +92,9 @@ s_time_layer_h2 = text_layer_create(
 
   // Apply to TextLayer
 
-text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_BITHAM_42_LIGHT));
-text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
-text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_BITHAM_34_MEDIUM_NUMBERS));
+text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h));
