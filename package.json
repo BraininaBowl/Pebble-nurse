@@ -2,12 +2,12 @@
     "author": "Brain in a Bowl",
     "dependencies": {},
     "keywords": [],
-    "name": "nurse",
+    "name": "nursewatch",
     "pebble": {
         "capabilities": [
             ""
         ],
-        "displayName": "Nurse",
+        "displayName": "Nursewatch",
         "enableMultiJS": true,
         "messageKeys": {},
         "projectType": "native",
@@ -35,7 +35,7 @@
             "basalt",
             "chalk"
         ],
-        "uuid": "cd3e1711-c5f7-4cbd-b42c-9e59d8649d86",
+        "uuid": "76bf83ff-d8a4-4927-8365-bf08fb373312",
         "watchapp": {
             "watchface": true
         }
