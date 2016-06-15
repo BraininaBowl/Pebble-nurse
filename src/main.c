@@ -28,6 +28,7 @@ static char s_buffer_h2[13];
   	text_layer_set_text(s_time_layer_h, s_buffer_h);
 text_layer_set_text(s_time_layer_h2, s_buffer_h2);
   	text_layer_set_text(s_time_layer_m, s_buffer_d);	
+text_layer_set_text(s_time_layer_b, s_battery_level);	
 
 }
 
@@ -58,7 +59,6 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 static void battery_callback(BatteryChargeState state) {
   // Record the new battery level
   s_battery_level = state.charge_percent;
-text_layer_set_text(s_time_layer_b, s_battery_level);	
 // Update meter
 layer_mark_dirty(s_battery_layer);
 }
