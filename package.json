@@ -1,0 +1,58 @@
+{
+    "author": "Brain in a Bowl",
+    "dependencies": {},
+    "keywords": [],
+    "name": "nurse",
+    "pebble": {
+        "capabilities": [
+            ""
+        ],
+        "displayName": "Nurse",
+        "enableMultiJS": true,
+        "messageKeys": {},
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/lines.png",
+                    "name": "Lines",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "characterRegex": "[monteuwnhfrisajbpylgcvdMTWFSJFAOND| - 0-9]",
+                    "file": "fonts/Pixel Millennium.ttf",
+                    "name": "Font_Date_8",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9]",
+                    "file": "fonts/MIN",
+                    "name": "MIN_24",
+                    "targetPlatforms": null,
+                    "trackingAdjust": 2,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9]",
+                    "file": "fonts/HOUR",
+                    "name": "HOUR_60",
+                    "targetPlatforms": null,
+                    "type": "font"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "cd3e1711-c5f7-4cbd-b42c-9e59d8649d86",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.0"
+}
