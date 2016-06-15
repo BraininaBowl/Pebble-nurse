@@ -19,9 +19,10 @@ static void update_time() {
 static char s_buffer_h2[13];
   strftime(s_buffer_h2, sizeof(s_buffer_h2), "%I:%M:%S %P", tick_time);
 
-
   static char s_buffer_d[12];
   strftime(s_buffer_d, sizeof(s_buffer_d), "%m/%d/%Y", tick_time);
+
+  char s_battery_level_c = s_battery_level;
 	
 
   // Display this time on the TextLayer
