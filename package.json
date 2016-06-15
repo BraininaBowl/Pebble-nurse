@@ -22,7 +22,7 @@
                     "type": "font"
                 },
                 {
-                    "characterRegex": "[0-9]",
+                    "characterRegex": "[0-9]: \\n",
                     "file": "fonts/HOUR",
                     "name": "HOUR_36",
                     "targetPlatforms": null,
