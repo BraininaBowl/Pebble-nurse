@@ -2,6 +2,7 @@
 
 static Window *s_main_window;
 static TextLayer *s_time_layer_h;
+static TextLayer *s_time_layer_h2;
 static TextLayer *s_time_layer_m;
 static Layer *s_battery_layer;
 static int s_battery_level;
@@ -14,8 +15,10 @@ static void update_time() {
   struct tm *tick_time = localtime(&temp);
 
   // Write the current hours and minutes into a buffer
-  static char s_buffer_h[21];
-  strftime(s_buffer_h, sizeof(s_buffer_h), "%H:%M:%S\n%I:%M:%S %P", tick_time);
+  static char s_buffer_h[8];
+  strftime(s_buffer_h, sizeof(s_buffer_h), "%H:%M:%S", tick_time);
+static char s_buffer_h2[13];
+  strftime(s_buffer_h, sizeof(s_buffer_h), "%I:%M:%S %P", tick_time);
 
 
   static char s_buffer_d[12];
@@ -49,6 +52,7 @@ static void update_time() {
 
   // Display this time on the TextLayer
   	text_layer_set_text(s_time_layer_h, s_buffer_h);
+text_layer_set_text(s_time_layer_h2, s_buffer_h2);
   	text_layer_set_text(s_time_layer_m, s_buffer_d2);	
 
 }
@@ -92,6 +96,9 @@ static void main_window_load(Window *window) {
   // Create the TextLayer with specific bounds
   s_time_layer_h = text_layer_create(
       GRect(0, (bounds.size.h/2)-40, bounds.size.w, 48));
+
+s_time_layer_h2 = text_layer_create(
+      GRect(0, (bounds.size.h/2)-30, bounds.size.w, 48));
 	
   s_time_layer_m = text_layer_create(
       GRect(0, (bounds.size.h/2)+20, bounds.size.w, 20));
@@ -101,7 +108,10 @@ static void main_window_load(Window *window) {
   text_layer_set_text_color(s_time_layer_h, GColorBlack);
   text_layer_set_text(s_time_layer_h, "0");
   text_layer_set_text_alignment(s_time_layer_h, GTextAlignmentCenter);
-
+  text_layer_set_background_color(s_time_layer_h2, GColorClear);
+  text_layer_set_text_color(s_time_layer_h2, GColorBlack);
+  text_layer_set_text(s_time_layer_h2, "0");
+  text_layer_set_text_alignment(s_time_layer_h2, GTextAlignmentCenter);
   text_layer_set_background_color(s_time_layer_m, GColorClear);
   text_layer_set_text_color(s_time_layer_m, GColorBlack);
   text_layer_set_text(s_time_layer_m, "00");
@@ -114,10 +124,12 @@ static void main_window_load(Window *window) {
 
   // Apply to TextLayer
   text_layer_set_font(s_time_layer_h, s_time_font_h);
+  text_layer_set_font(s_time_layer_h2, s_time_font_m);
   text_layer_set_font(s_time_layer_m, s_time_font_m);
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h));
+layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h2));
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_m));
 
 
@@ -135,6 +147,7 @@ layer_add_child(window_get_root_layer(window), s_battery_layer);
 static void main_window_unload(Window *window) {
   // Destroy TextLayer
   text_layer_destroy(s_time_layer_h);
+text_layer_destroy(s_time_layer_h2);
   text_layer_destroy(s_time_layer_m);
 
   // Unload GFont
