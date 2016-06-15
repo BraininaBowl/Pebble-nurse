@@ -6,8 +6,6 @@ static TextLayer *s_time_layer_h2;
 static TextLayer *s_time_layer_m;
 static Layer *s_battery_layer;
 static int s_battery_level;
-static GFont s_time_font_h;
-static GFont s_time_font_m;
 
 static void update_time() {
   // Get a tm structure
@@ -98,9 +96,10 @@ s_time_layer_h2 = text_layer_create(
   s_time_font_m = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_MIN_16));
 
   // Apply to TextLayer
-  text_layer_set_font(s_time_layer_h, s_time_font_h);
-  text_layer_set_font(s_time_layer_h2, s_time_font_m);
-  text_layer_set_font(s_time_layer_m, s_time_font_m);
+
+text_layer_set_font(s_time_layer_h, fonts_get_system_font(FONT_KEY_GOTHIC_24));
+text_layer_set_font(s_time_layer_h2, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
+text_layer_set_font(s_time_layer_m, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
 
   // Add it as a child layer to the Window's root layer
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer_h));
@@ -124,10 +123,6 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(s_time_layer_h);
 text_layer_destroy(s_time_layer_h2);
   text_layer_destroy(s_time_layer_m);
-
-  // Unload GFont
-  fonts_unload_custom_font(s_time_font_h);
-  fonts_unload_custom_font(s_time_font_m);
 
 // Destroy BatteryLayer
 layer_destroy(s_battery_layer);
