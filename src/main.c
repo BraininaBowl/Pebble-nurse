@@ -14,8 +14,8 @@ static void update_time() {
   struct tm *tick_time = localtime(&temp);
 
   // Write the current hours and minutes into a buffer
-  static char s_buffer_h[8];
-  strftime(s_buffer_h, sizeof(s_buffer_h), "%H : %M : %S \n %I : %M : %S", tick_time);
+  static char s_buffer_h[21];
+  strftime(s_buffer_h, sizeof(s_buffer_h), "%H:%M:%S\n%I:%M:%S %P", tick_time);
 
 
   static char s_buffer_d[12];
@@ -91,10 +91,10 @@ static void main_window_load(Window *window) {
 	
   // Create the TextLayer with specific bounds
   s_time_layer_h = text_layer_create(
-      GRect(0, 30, bounds.size.w, 72));
+      GRect(0, (bounds.size.h/2)-40, bounds.size.w, 48));
 	
   s_time_layer_m = text_layer_create(
-      GRect(0, 100, bounds.size.w, 30));
+      GRect(0, (bounds.size.h/2)+20, bounds.size.w, 20));
 
   // Improve the layout to be more like a watchface
   text_layer_set_background_color(s_time_layer_h, GColorClear);
@@ -110,7 +110,7 @@ static void main_window_load(Window *window) {
 	
   // Create GFont
   s_time_font_h = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_HOUR_24));
-  s_time_font_m = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_MIN_18));
+  s_time_font_m = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_MIN_16));
 
   // Apply to TextLayer
   text_layer_set_font(s_time_layer_h, s_time_font_h);
@@ -167,7 +167,7 @@ static void init() {
   update_time();
 
   // Register with TickTimerService
-  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+  tick_timer_service_subscribe(SECOND_UNIT, tick_handler);
 
 // Register for battery level updates
 battery_state_service_subscribe(battery_callback);

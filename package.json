@@ -14,14 +14,14 @@
         "resources": {
             "media": [
                 {
-                    "characterRegex": "[monteuwnhfrisajbpylgcvdMTWFSJFAOND| - 0-9]",
+                    "characterRegex": "[monteuwnhfrisajbpylgcvdMTWFSJFAONDP:| - 0-9]",
                     "file": "fonts/MIN",
-                    "name": "MIN_18",
+                    "name": "MIN_16",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "characterRegex": "[0-9]: \\n",
+                    "characterRegex": "[0-9 :\\n apmAPM]",
                     "file": "fonts/HOUR",
                     "name": "HOUR_24",
                     "targetPlatforms": null,
