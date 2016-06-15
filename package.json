@@ -24,7 +24,7 @@
                 {
                     "characterRegex": "[0-9]",
                     "file": "fonts/HOUR",
-                    "name": "HOUR_60",
+                    "name": "HOUR_36",
                     "targetPlatforms": null,
                     "type": "font"
                 }
