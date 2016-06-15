@@ -18,7 +18,7 @@ static void update_time() {
   static char s_buffer_h[8];
   strftime(s_buffer_h, sizeof(s_buffer_h), "%H:%M:%S", tick_time);
 static char s_buffer_h2[13];
-  strftime(s_buffer_h, sizeof(s_buffer_h), "%I:%M:%S %P", tick_time);
+  strftime(s_buffer_h2, sizeof(s_buffer_h2), "%I:%M:%S %P", tick_time);
 
 
   static char s_buffer_d[12];
